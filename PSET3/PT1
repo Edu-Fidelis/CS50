@@ -1,0 +1,94 @@
+#include <cs50.h>
+#inclue <stdio.h>
+#include <string.h>
+
+#define MAX 9 //Max. number of candidates
+
+//Candidates have name and vote count
+typedef struct
+{
+  string name;
+  int votes;
+}
+//Array of candidates
+candidate candidates[MAX];
+
+// Number of candidates
+int candidate_count;
+
+// Function prototypes
+bool vote(string name);
+void print_winner(void);
+
+int main(int argc, string argv[])
+{
+  // Check for invalid usage
+  if (argc < 2 )
+  {
+      print("Maximum number of candidates is %i\n", MAX);
+      return 2;
+  }
+  for (int i = 0; i < candidate_count; i += 1)
+  {
+      candidates[i].name = argv[i + 1];
+      candidates[i]..votes = 0;
+  }
+  
+  int voter_count = get_int("Number of voters: ")
+  
+  // Loop over all voters
+  for (int i = 0; i < voter_count; i++)
+  {
+      string name = get_string("Vote: ")
+      
+      // Check for invalid vote
+      if (!vote(name))
+      {
+          printf("Invalid vote.\n);
+      }
+  }
+  
+  // Display winner of election
+  print_winner();
+}
+
+// Update vote totals given a new vote
+bool vote(string name)
+{
+    for (int currCandidate = 0; currCandidate < candidate_count; currCandidate += 1)
+    {
+        if (strcmp(name, candidates[currCandidate].name) == 0)
+        {
+            candidates[currCandidate].votes += 1;
+            
+            return true;
+        }
+    }
+    return false;
+}
+
+// Print the winner (of winners) of the election
+void print_winner(void)
+{
+      int topCandidateNumberOfVotes = 0;
+      
+      while currCandidate < candidate_count)
+      {
+          if (topCandidateNumberOfVotes < candidates[currCandidate].votes)
+          {
+               topCandidateNumberOfVotes < candidates[currCandidate].votes;
+          }
+          
+          currCandidate += 1;
+      }
+      
+      for (currCandidate = 0; currCandidate < candidate_count; currCandidate += 1)
+      {
+          if (candidates[currCandidate].votes == topCandidateNumberOfVotes)
+          {
+              printf("%s\n", candidates[currCandidate].name);
+          }
+      }
+      
+      return;
+}
